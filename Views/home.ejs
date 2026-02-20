@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Shortener</title>
+
+    <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🔗 URL Shortener</h1>
+            <p class="subtitle">Generate short URLs and track clicks.</p>
+        </header>
+
+        <% if (locals.id) { %>
+            <div class="card success">
+                <p class="success-text">
+                    ✅ URL Generated:
+                    <a class="link" href="/<%= id %>" target="_blank">
+                        http://localhost:8001/<%= id %>
+                    </a>
+                </p>
+            </div>
+            <% } %>
+
+                <div class="card">
+                    <form class="form" action="/url" method="post">
+                        <label class="label">Enter Original URL</label>
+
+                        <div class="input-row">
+                            <input class="input" type="text" placeholder="https://example.com" name="url" required />
+                            <button class="btn" type="submit">Generate</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h3 class="section-title">All URLs</h3>
+
+                    <% if (locals.urls && urls.length> 0) { %>
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Short ID</th>
+                                        <th>Short Link</th>
+                                        <th>Redirect URL</th>
+                                        <th>Clicks</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <% urls.forEach((u, index)=> { %>
+                                        <tr>
+                                            <td>
+                                                <%= index + 1 %>
+                                            </td>
+                                            <td>
+                                                <%= u.shortid %>
+                                            </td>
+
+                                            <td>
+                                                <a class="link" href="/<%= u.shortid %>" target="_blank">/<%= u.shortid
+                                                        %></a>
+                                            </td>
+
+                                            <td class="wrap">
+                                                <a class="link" href="<%= u.redirectUrl %>" target="_blank"
+                                                    rel="noreferrer">
+                                                    <%= u.redirectUrl %>
+                                                </a>
+                                            </td>
+
+                                            <td>
+                                                <span class="pill">
+                                                    <%= (u.visitHistory && u.visitHistory.length) ?
+                                                        u.visitHistory.length : 0 %>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                        <% } else { %>
+                            <p class="empty">No URLs yet. Create your first one above.</p>
+                            <% } %>
+                </div>
+
+                <footer class="footer">
+                    <p>Made with Express + MongoDB</p>
+                </footer>
+    </div>
+</body>
+
+</html>

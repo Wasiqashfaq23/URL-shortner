@@ -10,14 +10,16 @@ async function generateShortUrl(req, res) {
         redirectUrl: body.url,
         visitHistory: [],
     });
-    return res.json(shortID)
+    return res.render("home",{
+        id:shortID
+    })
 }
 
 async function redirectToUrl(req, res) {
     const shortId = req.params.shortId;
     const entry = await URL.findOneAndUpdate(
         {
-            shortid: shortId
+            shortid: shortId,
 
         },
         {
@@ -46,4 +48,12 @@ async function getAnalytics(req, res) {
     )
 }
 
-module.exports = { generateShortUrl, redirectToUrl, getAnalytics }
+async function renderHome(req, res) {
+    const allUrls = await URL.find({});
+    return res.render("home", {
+        urls: allUrls
+    },
+    )
+}
+
+module.exports = { generateShortUrl, redirectToUrl, getAnalytics, renderHome }

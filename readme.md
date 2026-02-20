@@ -1,21 +1,25 @@
 # 🔗 URL Shortener with Analytics
 
-A simple URL Shortener built with **Node.js, Express, and MongoDB**.
+A simple URL Shortener built with **Node.js, Express, MongoDB, and EJS**.
 
 It allows users to:
 - Generate short URLs
 - Redirect to original URLs
 - Track total clicks
 - View visit history (timestamps)
+- Use a clean web dashboard interface
 
 ---
 
 ## 🚀 Features
 
-✅ Create short URLs  
+✅ Create short URLs from web form  
 ✅ Redirect using short ID  
 ✅ Track total clicks  
 ✅ Store visit timestamps  
+✅ View all URLs in dashboard  
+✅ Server-side rendering using EJS  
+✅ Styled UI using CSS  
 ✅ MongoDB database integration  
 
 ---
@@ -26,11 +30,15 @@ It allows users to:
 - Express.js
 - MongoDB
 - Mongoose
+- EJS
+- CSS
 - shortid
 
 ---
 
 ## 📁 File Structure
+
+```
 url-shortener/
 │
 ├── Controller/
@@ -42,11 +50,20 @@ url-shortener/
 ├── Routes/
 │   └── url.js
 │
+├── Views/
+│   └── home.ejs
+│
+├── Public/
+│   └── style.css
+│
 ├── connect.js
 ├── index.js
 ├── package.json
 ├── package-lock.json
 └── README.md
+```
+
+---
 
 ## 📦 Installation & Setup
 
@@ -69,11 +86,9 @@ npm install
 
 Update your MongoDB connection string inside:
 
-```
-connect.js
-```
+`connect.js`
 
-Example:
+Example (Local MongoDB):
 
 ```js
 connectToMongo("mongodb://localhost:27017/url-shortener")
@@ -100,6 +115,24 @@ Server will run on:
 ```
 http://localhost:8001
 ```
+
+---
+
+## 🌐 Web Interface
+
+Open in your browser:
+
+```
+http://localhost:8001/url/home
+```
+
+From the UI you can:
+
+- Enter a long URL
+- Generate a short link
+- View all stored URLs
+- See total click count
+- Click short link to redirect
 
 ---
 
@@ -150,8 +183,7 @@ Response:
   "totalClicks": 5,
   "analytics": [
     {
-        "timestamp": 1771612100484,
-        "_id": "6998a7c4fe76d1b4cdc6aa85"
+      "timestamp": 1771612100484
     }
   ]
 }
@@ -161,13 +193,14 @@ Response:
 
 ## 📊 How It Works
 
-1. User sends a long URL.
+1. User sends a long URL (via API or web form).
 2. Server generates a unique short ID.
 3. URL is stored in MongoDB.
 4. When short URL is visited:
    - User is redirected.
    - Timestamp is stored.
-5. Analytics endpoint shows total clicks & visit history.
+5. Dashboard displays all URLs and click counts.
+6. Analytics endpoint shows total clicks & visit history.
 
 ---
 
