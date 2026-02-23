@@ -1,16 +1,20 @@
-const mongoose=require("mongoose")
+const mongoose = require("mongoose")
 
-const schema=new mongoose.Schema({
-    shortid:{
-        type:String,
-        required:true,
-        unique:true
+const schema = new mongoose.Schema({
+    shortid: {
+        type: String,
+        required: true,
+        unique: true
     },
-    redirectUrl:{
-        type:String,
-        required:true
+    redirectUrl: {
+        type: String,
+        required: true
     },
-    visitHistory:[{timestamp:{type:Number}}]
-},{timestaps:true})
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    },
+    visitHistory: [{ timestamp: { type: Number } }],
+}, { timestaps: true })
 const URL = mongoose.model('url', schema)
 module.exports = URL

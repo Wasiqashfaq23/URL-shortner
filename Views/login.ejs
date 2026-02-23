@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="/login.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-card">
+      <h1>🔐 Login</h1>
+      <p class="subtitle">Welcome back</p>
+
+      <% if (locals.error) { %>
+        <p class="error"><%= error %></p>
+      <% } %>
+
+      <form class="auth-form" action="/user/login" method="POST">
+        <label class="label">Email</label>
+        <input class="input" type="email" name="email" required />
+
+        <label class="label">Password</label>
+        <input class="input" type="password" name="password" required />
+
+        <button type="submit" class="primary-btn">Login</button>
+      </form>
+
+      <form action="/user/signup" method="GET">
+        <button type="submit" class="secondary-btn">Create New Account</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
