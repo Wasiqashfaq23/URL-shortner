@@ -147,7 +147,6 @@ http://localhost:8001
 | POST | `/user/login` | Login user |
 | GET | `/user/signup` | Render signup page |
 | POST | `/user/signup` | Create new user |
-| GET | `/user/logout` | Logout user |
 
 ---
 
