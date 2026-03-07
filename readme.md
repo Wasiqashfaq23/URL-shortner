@@ -1,46 +1,45 @@
-# 🔗 URL Shortener with User Authentication & Analytics
+# 🔗 URL Shortener with Authentication & Analytics
 
-A full-stack URL Shortener built using **Node.js, Express, MongoDB, Mongoose, EJS, and Cookie-based Authentication**.
+A modern full-stack URL Shortener built using **Node.js, Express.js, MongoDB, Mongoose, and EJS** with cookie-based authentication and role-based dashboard access.
 
-This application allows users to create short URLs, track analytics, and manage their own links through a secure dashboard.
+This project allows users to generate short URLs, track analytics, and manage links securely using middleware-protected routes.
 
 ---
 
-## 🚀 Features
+## ✨ Features
 
-### 🔐 Authentication
-- User Signup
-- User Login
-- Cookie-based Session Management
-- Protected Dashboard (per-user URLs)
-- Logout functionality
+### 🔐 Authentication System
+
+* User Signup & Login
+* Cookie-based JWT Session Handling
+* Role-Based Access Control (Normal & Admin)
+* Protected Dashboard Routes
 
 ### 🔗 URL Management
-- Generate short URLs
-- Redirect to original URLs
-- Track total clicks
-- Store visit timestamps
-- View only your own URLs
-- Clean dashboard interface
+
+* Generate unique short URLs
+* Redirect to original URLs
+* Track click counts
+* Store visit timestamps
+* User-specific URL dashboard
 
 ### 📊 Analytics
-- Total click count
-- Timestamp-based visit history
-- REST endpoint for analytics
+
+* Total click tracking
+* Visit history monitoring
 
 ---
 
 ## 🛠 Tech Stack
 
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
-- EJS (Server-side rendering)
-- Cookie-Parser
-- UUID (Session IDs)
-- shortid (URL generation)
-- CSS
+* Node.js
+* Express.js
+* MongoDB & Mongoose
+* EJS (Server-side Rendering)
+* Cookie Parser
+* UUID
+* URL short ID generator
+* CSS for UI styling
 
 ---
 
@@ -80,15 +79,15 @@ url-shortener/
 ├── connect.js
 ├── index.js
 ├── package.json
-├── package-lock.json
+│
 └── README.md
 ```
 
 ---
 
-## 📦 Installation Guide
+## 📦 Installation & Setup
 
-### 1️⃣ Clone Repository
+### Clone Repository
 
 ```bash
 git clone https://github.com/Wasiqashfaq23/URL-shortner.git
@@ -97,7 +96,7 @@ cd URL-shortner
 
 ---
 
-### 2️⃣ Install Dependencies
+### Install Dependencies
 
 ```bash
 npm install
@@ -105,31 +104,33 @@ npm install
 
 ---
 
-### 3️⃣ Configure MongoDB
+### Configure MongoDB Connection
 
-Open `connect.js` and update:
+Edit `connect.js`:
 
-For Local MongoDB:
+Local MongoDB:
+
 ```js
 connectToMongo("mongodb://localhost:27017/url-shortener")
 ```
 
-For MongoDB Atlas:
+MongoDB Atlas:
+
 ```js
 connectToMongo("your-atlas-connection-string")
 ```
 
-Make sure MongoDB is running before starting the server.
+Make sure MongoDB service is running before starting the server.
 
 ---
 
-### 4️⃣ Start Server
+### Run Application
 
 ```bash
 npm start
 ```
 
-Server runs on:
+Server will start at:
 
 ```
 http://localhost:8001
@@ -137,69 +138,68 @@ http://localhost:8001
 
 ---
 
-## 🌐 Application Routes
+## 🌐 API & Application Routes
 
-### 🔐 Authentication
+### Authentication Routes
 
-| Method | Route | Description |
-|--------|--------|-------------|
-| GET | `/user/login` | Render login page |
-| POST | `/user/login` | Login user |
-| GET | `/user/signup` | Render signup page |
-| POST | `/user/signup` | Create new user |
-
----
-
-### 🔗 URL Routes (Protected)
-
-| Method | Route | Description |
-|--------|--------|-------------|
-| GET | `/url/home` | Dashboard (User URLs only) |
-| POST | `/url` | Create short URL |
-| GET | `/url/analytics/:shortId` | Get analytics |
+| Method | Route          | Description        |
+| ------ | -------------- | ------------------ |
+| GET    | `/user/login`  | Render login page  |
+| POST   | `/user/login`  | User login         |
+| GET    | `/user/signup` | Render signup page |
+| POST   | `/user/signup` | Create user        |
 
 ---
 
-### 🌍 Public Route
+### Protected Dashboard Routes
 
-| Method | Route | Description |
-|--------|--------|-------------|
-| GET | `/:shortId` | Redirect to original URL |
-
----
-
-## 🔄 How It Works
-
-1. User signs up or logs in.
-2. A unique session ID is generated and stored in cookies.
-3. User creates a short URL.
-4. URL is saved with `createdBy` referencing that user.
-5. Dashboard shows only URLs created by that user.
-6. When a short link is visited:
-   - User is redirected.
-   - Timestamp is stored.
-7. Analytics endpoint provides click history.
+| Method | Route                     | Description                     |
+| ------ | ------------------------- | ------------------------------- |
+| GET    | `/url/home`               | User dashboard (Normal + Admin) |
+| GET    | `/url/admin`              | Admin dashboard                 |
+| POST   | `/url`                    | Create short URL                |
+| GET    | `/url/analytics/:shortId` | View analytics                  |
 
 ---
 
-## 🧠 Core Concepts Used
+### Public Routes
 
-- MVC Architecture
-- Cookie-based session handling
-- MongoDB relationships using ObjectId (`createdBy`)
-- Middleware-based route protection
-- Server-side rendering with EJS
+| Method | Route       | Description              |
+| ------ | ----------- | ------------------------ |
+| GET    | `/:shortId` | Redirect to original URL |
 
 ---
 
-## ⚠️ Notes
+## 🔄 Workflow
 
-- Sessions are stored in memory using `Map` (for learning purposes only).
-- Not production-ready session handling.
-- Passwords are currently stored in plain text (hashing recommended for production).
+1. User registers or logs in
+2. Server generates JWT token stored in cookies
+3. Middleware verifies authentication
+4. Role-based authorization controls dashboard access
+5. Users can create and manage their short URLs
+6. Analytics track link visits
+
+---
+
+## 🧠 Key Concepts Used
+
+* MVC Architecture
+* Middleware-based authentication
+* JWT-based cookie session handling
+* MongoDB ObjectId relationships
+* Role-based authorization
+* Server-side rendering with EJS
+
+---
+
+## ⚠️ Security Notes
+
+* Passwords are stored in plaintext.
+* Session handling is for learning/demo purposes.
+* Not production-ready session handling.
 
 ---
 
 ## 👨‍💻 Author
 
-Wasiq  
+**Wasiq**
