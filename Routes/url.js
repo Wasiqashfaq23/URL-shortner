@@ -1,8 +1,10 @@
-const express=require("express")
+const express = require("express")
 const router = express.Router();
-const {generateShortUrl,redirectToUrl,getAnalytics,renderHome}= require("../Controller/url")
-router.get("/home",renderHome)
-router.get("/analytics/:shortId",getAnalytics)
-router.post("/",generateShortUrl)
-router.get("/:shortId",redirectToUrl)
-module.exports=router
+const { restrictTo } = require("../Middleware/Auth")
+const { generateShortUrl, redirectToUrl, getAnalytics, renderHome, renderAll } = require("../Controller/url")
+router.get("/home", restrictTo(["Normal" ,"Admin"]), renderHome)
+router.get("/admin", restrictTo(["Admin"]), renderAll)
+router.get("/analytics/:shortId", getAnalytics)
+router.post("/", generateShortUrl)
+router.get("/:shortId", redirectToUrl)
+module.exports = router

@@ -1,5 +1,24 @@
 const shortId = require("shortid")
 const URL = require("../Model/url")
+
+
+async function renderHome(req, res) {
+    const allUrls = await URL.find({ createdBy: req.user._id });
+    return res.render("home", {
+        urls: allUrls,
+    },
+    )
+}
+
+async function renderAll(req, res) {
+    const allUrls = await URL.find({});
+    return res.render("home", {
+        urls: allUrls,
+    },
+    )
+}
+
+
 async function generateShortUrl(req, res) {
     const body = req.body;
     if (!body.url) { return res.status(400).json({ error: "URL is reuqired" }) }
@@ -8,10 +27,10 @@ async function generateShortUrl(req, res) {
         shortid: shortID,
         redirectUrl: body.url,
         visitHistory: [],
-        createdBy:req.user._id,
+        createdBy: req.user._id,
     });
-    return res.render("home",{
-        id:shortID,
+    return res.render("home", {
+        id: shortID,
     })
 }
 
@@ -48,12 +67,6 @@ async function getAnalytics(req, res) {
     )
 }
 
-async function renderHome(req, res) {
-    const allUrls = await URL.find({ createdBy:req.user._id});
-    return res.render("home", {
-        urls: allUrls,
-    },
-    )
-}
 
-module.exports = { generateShortUrl, redirectToUrl, getAnalytics, renderHome }
+
+module.exports = { generateShortUrl, redirectToUrl, getAnalytics, renderHome, renderAll }

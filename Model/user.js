@@ -10,6 +10,11 @@ const Schema = new mongoose.Schema({
         required:true,
         unique:true,
     },
+    role:{
+        type:String,
+        required:true,
+        default:"Normal",
+    },
     password:{
         type:String,
         required:true,
