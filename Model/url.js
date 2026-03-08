@@ -15,6 +15,6 @@ const schema = new mongoose.Schema({
         ref: "User",
     },
     visitHistory: [{ timestamp: { type: Number } }],
-}, { timestaps: true })
+}, { timestamps: true })
 const URL = mongoose.model('url', schema)
 module.exports = URL
