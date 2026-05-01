@@ -148,6 +148,7 @@ http://localhost:8001
 | POST   | `/user/login`  | User login         |
 | GET    | `/user/signup` | Render signup page |
 | POST   | `/user/signup` | Create user        |
+| GET    | `/user/logout` | Logs Out User      |
 
 ---
 
@@ -167,6 +168,7 @@ http://localhost:8001
 | Method | Route       | Description              |
 | ------ | ----------- | ------------------------ |
 | GET    | `/:shortId` | Redirect to original URL |
+| GET    | `/`         | Landing page             |   
 
 ---
 
