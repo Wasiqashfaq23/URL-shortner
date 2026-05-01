@@ -29,7 +29,9 @@ async function generateShortUrl(req, res) {
         visitHistory: [],
         createdBy: req.user._id,
     });
+    const allUrls = await URL.find({ createdBy: req.user._id });
     return res.render("home", {
+        urls: allUrls,
         id: shortID,
     })
 }

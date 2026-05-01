@@ -189,12 +189,11 @@ http://localhost:8001
 * MongoDB ObjectId relationships
 * Role-based authorization
 * Server-side rendering with EJS
-
+* Password Encryption using bcrypt
 ---
 
 ## ⚠️ Security Notes
 
-* Passwords are stored in plaintext.
 * Session handling is for learning/demo purposes.
 * Not production-ready session handling.
 

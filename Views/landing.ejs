@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>URL Shortener</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/landing.css" />
+  <style>
+    footer span { color: var(--muted2); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Shortne<span class="logo-accent">r</span></div>
+  <div class="nav-actions">
+    <a href="/user/login" class="btn-ghost">Log in</a>
+    <a href="/user/signup" class="btn-primary">Get started free</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">
+    <div class="badge-dot"></div>
+    Free URL shortener with click tracking
+  </div>
+  <h1>Short links,<br><em>real results.</em></h1>
+  <p>Shorten any URL in seconds. Track every click and manage all your links in one place.</p>
+
+  <div class="demo-box">
+    <input class="demo-input" type="text" value="https://example.com/some/very/long/url/nobody-wants-to-share" readonly />
+    <button class="demo-btn">Shorten →</button>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">10k+</div>
+    <div class="stat-label">Links shortened</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">99%</div>
+    <div class="stat-label">Uptime</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">0ms</div>
+    <div class="stat-label">Redirect delay</div>
+  </div>
+</div>
+
+<div class="features" style="position:relative;z-index:1;">
+  <div class="feature">
+    <div class="feature-icon icon-purple">⚡</div>
+    <h3>Instant shortening</h3>
+    <p>Paste your URL and get a short link immediately. No setup, no waiting.</p>
+  </div>
+  <div class="feature">
+    <div class="feature-icon icon-red">📊</div>
+    <h3>Click tracking</h3>
+    <p>See exactly how many times each link has been clicked, updated in real time.</p>
+  </div>
+  <div class="feature">
+    <div class="feature-icon icon-green">🔐</div>
+    <h3>Private & secure</h3>
+    <p>Your links are tied to your account. Nobody else can see or manage them.</p>
+  </div>
+</div>
+
+<div class="how">
+  <p class="section-label">How it works</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-bar bar-purple"></div>
+      <div class="step-num">01</div>
+      <h3>Create an account</h3>
+      <p>Sign up free in seconds. No credit card, no nonsense.</p>
+    </div>
+    <div class="step">
+      <div class="step-bar bar-red"></div>
+      <div class="step-num">02</div>
+      <h3>Paste your URL</h3>
+      <p>Drop in any long link and hit generate. Done in one click.</p>
+    </div>
+    <div class="step">
+      <div class="step-bar bar-mixed"></div>
+      <div class="step-num">03</div>
+      <h3>Share & track</h3>
+      <p>Share your short link anywhere and watch the clicks come in.</p>
+    </div>
+  </div>
+</div>
+
+<div class="preview-section">
+  <div class="preview-text">
+    <h2>All your links,<br><em>one place.</em></h2>
+    <p>A clean dashboard to manage every link you've created. Click counts at a glance, original URLs always accessible.</p>
+    <a href="/user/signup" class="btn-primary" style="display:inline-block; text-decoration:none;">Start for free →</a>
+  </div>
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+    </div>
+    <div class="preview-card-body">
+      <div class="url-row">
+        <div class="url-left">
+          <span class="url-short">trimr.app/x9k2m</span>
+          <span class="url-original">https://github.com/user/project-repo</span>
+        </div>
+        <span class="url-clicks">142 clicks</span>
+      </div>
+      <div class="url-row">
+        <div class="url-left">
+          <span class="url-short">trimr.app/p3jqw</span>
+          <span class="url-original">https://docs.google.com/spreadsheet/long</span>
+        </div>
+        <span class="url-clicks">87 clicks</span>
+      </div>
+      <div class="url-row">
+        <div class="url-left">
+          <span class="url-short">trimr.app/t7bnx</span>
+          <span class="url-original">https://youtube.com/watch?v=dQw4w9WgXcQ</span>
+        </div>
+        <span class="url-clicks">34 clicks</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="cta">
+  <h2>Ready to start<br><em>trimming?</em></h2>
+  <p>Free forever. No credit card needed.</p>
+  <a href="/user/signup" class="btn-white">Create free account →</a>
+</section>
+
+<footer>
+  <p>Built with <span>Express + MongoDB</span> · © 2025 Trimr</p>
+</footer>
+
+</body>
+</html>

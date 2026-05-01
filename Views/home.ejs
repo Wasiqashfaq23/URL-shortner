@@ -12,21 +12,31 @@
 <body>
     <div class="container">
         <header class="header">
-            <h1>🔗 URL Shortener</h1>
-            <p class="subtitle">Generate short URLs and track clicks.</p>
-        </header>
+  <div class="header-left">
+    <div class="header-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+      </svg>
+    </div>
+    <div>
+      <h1>URL Shortener</h1>
+      <p class="subtitle">Generate short URLs and track clicks.</p>
+    </div>
+  </div>
+  <a href="/user/logout" class="logout-btn">Logout</a>
+</header>
 
         <% if (locals.id) { %>
             <div class="card success">
                 <p class="success-text">
                     ✅ URL Generated:
                     <a class="link" href="/url/<%= id %>" target="_blank">
-                        http://localhost:8001/url/<%= id %>
+                        `${process.env.BASE_URL}`/<%= id %>
                     </a>
                 </p>
             </div>
             <% } %>
-
                 <div class="card">
                     <form class="form" action="/url" method="post">
                         <label class="label">Enter Original URL</label>
