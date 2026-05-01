@@ -6,6 +6,7 @@ async function renderHome(req, res) {
     const allUrls = await URL.find({ createdBy: req.user._id });
     return res.render("home", {
         urls: allUrls,
+        baseUrl: process.env.BASE_URL 
     },
     )
 }
@@ -14,6 +15,7 @@ async function renderAll(req, res) {
     const allUrls = await URL.find({});
     return res.render("home", {
         urls: allUrls,
+        baseUrl: process.env.BASE_URL 
     },
     )
 }
@@ -33,6 +35,7 @@ async function generateShortUrl(req, res) {
     return res.render("home", {
         urls: allUrls,
         id: shortID,
+        baseUrl: process.env.BASE_URL 
     })
 }
 
